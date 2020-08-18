@@ -1,4 +1,5 @@
 Job :
+
     - title
     - location
     - job type
@@ -12,6 +13,7 @@ Job :
     - post a job
 
 Blog : 
+
     - Title
     - Category
     - Comments
