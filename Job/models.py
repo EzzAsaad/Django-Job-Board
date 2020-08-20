@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify
 
 
 def upload_image(instance, filename):
@@ -24,6 +25,11 @@ class Job(models.Model):  #table
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     experience = models.IntegerField(default=0)
     image = models.ImageField(upload_to=upload_image)
+    slug = models.SlugField(blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(Job, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title
